@@ -1,22 +1,22 @@
 function showPreview(event) {
   document.getElementsByClassName("upload__form").hidden = false;
   if (event.target.files.length > 0) {
-    var src = window.URL.createObjectURL(event.target.files[0]);
-    var preview = document.getElementById("preview-image");
-    var form = document.getElementsByTagName("label");
+    let src = window.URL.createObjectURL(event.target.files[0]);
+    let preview = document.getElementById("preview-image");
+    let form = document.getElementsByClassName("upload__label")[0];
     preview.src = src;
     preview.style.display = "block";
-    form[0].style.display = "none";
+    form.style.display = "none";
   }
   init().then(() => {
     predict();
-  })
+  });
 }
 
 // the link to your model provided by Teachable Machine export panel
 const URL = "https://teachablemachine.withgoogle.com/models/PMw8cuZzx/";
 
-let model, webcam, labelContainer, maxPredictions;
+let model, labelContainer, maxPredictions;
 
 // Load the image model and setup the webcam
 async function init() {
@@ -41,11 +41,84 @@ async function init() {
 // run the webcam image through the image model
 async function predict() {
   // predict can take in an image, video or canvas html element
-  var image = document.getElementById("preview-image");
+  let image = document.getElementById("preview-image");
   const prediction = await model.predict(image, false);
-  for (let i = 0; i < maxPredictions; i++) {
-    const classPrediction =
-      prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-    labelContainer.childNodes[i].innerHTML = classPrediction;
+  prediction.sort(
+    (a, b) => parseFloat(b.probability) - parseFloat(a.probability)
+  );
+  // Check Gender
+  checkGender();
+
+  // If User is a male
+  if (checkGender() === "male") {
+    for (let i = 0; i < maxPredictions; i++) {
+      if (
+        prediction[i].className === "badmen" ||
+        prediction[i].className === "goodmen"
+      ) {
+        const resultProbability = prediction[i].probability.toFixed(2);
+        let label;
+        let testResult;
+        switch (prediction[i].className) {
+          case "badmen":
+            testResult = "바람필상";
+            label = "바람필상";
+            break;
+          case "goodmen":
+            testResult = "바람안필상";
+            label = "바람안필상";
+            break;
+          default:
+            testResult = "알수없음";
+        }
+        let result = document.querySelector(".test-result");
+        result.innerText = testResult;
+        result.style.display = "block";
+        labelContainer.childNodes[i].innerHTML = label + resultProbability;
+      } else {
+        continue;
+      }
+    }
+  } 
+  // If User is a female
+  else {
+    for (let i = 0; i < maxPredictions; i++) {
+      if (
+        prediction[i].className === "badwomen" ||
+        prediction[i].className === "goodwomen"
+      ) {
+        const resultProbability = prediction[i].probability.toFixed(2);
+        let label;
+        let testResult;
+        switch (prediction[i].className) {
+          case "badwomen":
+            testResult = "바람필상";
+            label = "바람필상";
+            break;
+          case "goodwomen":
+            testResult = "바람안필상";
+            label = "바람안필상";
+            break;
+          default:
+            testResult = "알수없음";
+        }
+        let result = document.querySelector(".test-result");
+        result.innerText = testResult;
+        result.style.display = "block";
+        labelContainer.childNodes[i].innerHTML = label + resultProbability;
+      } else {
+        continue;
+      }
+    }
+  }
+}
+
+function checkGender() {
+  const checkedGender = document.getElementsByClassName("toggle-state")[0].checked;
+  
+  if (checkedGender) {
+    return "female";
+  } else {
+    return "male";
   }
 }

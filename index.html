@@ -18,7 +18,18 @@
         <li class="nav__menu__list">About</li>
       </div>
     </nav>
-  
+    
+    <section id="gender">
+      <h3>Gender</h3>
+      <label class="gender__label">
+        <div class="gender__toggle">
+          <input class="toggle-state" type="checkbox" name="gender" />
+          <div class="indicator"></div>
+        </div>
+      </label>
+      <div class="gender__label-text">Men / Woman</div>
+    </section>
+
     <section id="home">
       <div class="home__left">
         <h1 class="title__main">바람기테스트</h1>
@@ -27,10 +38,11 @@
       <div class="home__right">
         <div class="uploader">
           <div class="upload__form">
-            <label for="upload-file">UPLOAD IMAGE !</label> 
+            <label class="upload__label" for="upload-file">UPLOAD IMAGE !</label> 
             <input type="file" id="upload-file" accept="image/*" onchange="showPreview(event);">
             <div class="upload__preview"></div>
               <img class="preview" id="preview-image" />
+              <p class="test-result"></pc=>
               <div id="label-container"></div>
             </div>
           </div>  
