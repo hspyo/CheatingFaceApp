@@ -75,6 +75,8 @@ async function predict() {
         result.innerText = testResult;
         result.style.display = "block";
         labelContainer.childNodes[i].innerHTML = label + resultProbability;
+        
+      showShareBtn();
       } else {
         continue;
       }
@@ -121,4 +123,9 @@ function checkGender() {
   } else {
     return "male";
   }
+}
+
+function showShareBtn() {
+  let shareBtn = document.getElementById("shareBtn");
+  shareBtn.style.display = "block";
 }
