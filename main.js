@@ -1,3 +1,43 @@
+// Navbar Toggle Button
+const navMenu = document.querySelector(".nav__menu");
+const navToggleBtn = document.querySelector(".nav__toggle__btn");
+navToggleBtn.addEventListener("click", () => {
+  navMenu.classList.toggle("open");
+});
+
+// SNS share btn
+function showShareBtn() {
+  const shareBtn = document.getElementById("shareBtn");
+  shareBtn.style.display = "block";
+}
+
+function showPreview(event) {
+  document.getElementsByClassName("upload__form").hidden = false;
+  if (event.target.files.length > 0) {
+    let src = window.URL.createObjectURL(event.target.files[0]);
+    let preview = document.getElementById("preview-image");
+    let form = document.getElementsByClassName("upload__label")[0];
+    preview.src = src;
+    preview.style.display = "block";
+    form.style.display = "none";
+  }
+  init().then(() => {
+    predict();
+  });
+}
+
+function checkGender() {
+  const checkedGender = document.getElementsByClassName("toggle-state")[0]
+    .checked;
+
+  if (checkedGender) {
+    return "female";
+  } else {
+    return "male";
+  }
+} 
+
+// Teachable Machine
 // the link to your model provided by Teachable Machine export panel
 const URL = "https://teachablemachine.withgoogle.com/models/PMw8cuZzx/";
 
@@ -96,43 +136,5 @@ async function predict() {
         continue;
       }
     }
-  }
-}
-
-const navMenu = document.querySelector(".nav__menu");
-const navToggleBtn = document.querySelector(".nav__menu__btn");
-document.addEventListener("click", () => {
-  navMenu.classList.toggle("open");
-});
-// SNS share btn
-function showShareBtn() {
-  const shareBtn = document.getElementById("shareBtn");
-  shareBtn.style.display = "block";
-}
-
-
-function showPreview(event) {
-  document.getElementsByClassName("upload__form").hidden = false;
-  if (event.target.files.length > 0) {
-    let src = window.URL.createObjectURL(event.target.files[0]);
-    let preview = document.getElementById("preview-image");
-    let form = document.getElementsByClassName("upload__label")[0];
-    preview.src = src;
-    preview.style.display = "block";
-    form.style.display = "none";
-  }
-  init().then(() => {
-    predict();
-  });
-}
-
-function checkGender() {
-  const checkedGender = document.getElementsByClassName("toggle-state")[0]
-    .checked;
-
-  if (checkedGender) {
-    return "female";
-  } else {
-    return "male";
   }
 }
