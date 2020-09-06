@@ -197,7 +197,7 @@ a {
   display: none;
 }
 
-.gender__toggle-state:checked ~ .indicator {
+.gender__toggle-state:checked ~ .gender__indicator {
   transform: translate3d(25%, 0, 0);
 }
 
@@ -232,10 +232,6 @@ a {
     display: block;
   }
 
-  .nav__menu__toggle {
-    display: block;
-  }
-
   .nav__logo img {
     width: 2rem;
     height: 2.2rem;
@@ -252,7 +248,7 @@ a {
 
   #gender h1 {
     font-size: 1.6rem;
-    margin: 15% 0 5% 0;
+    margin: 13% 0 5% 0;
   }
 
   #home {

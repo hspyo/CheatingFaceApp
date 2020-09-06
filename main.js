@@ -27,7 +27,7 @@ function showPreview(event) {
 }
 
 function checkGender() {
-  const checkedGender = document.getElementsByClassName("toggle-state")[0]
+  const checkedGender = document.getElementsByClassName("gender__toggle-state")[0]
     .checked;
 
   if (checkedGender) {
