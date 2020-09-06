@@ -1,18 +1,3 @@
-function showPreview(event) {
-  document.getElementsByClassName("upload__form").hidden = false;
-  if (event.target.files.length > 0) {
-    let src = window.URL.createObjectURL(event.target.files[0]);
-    let preview = document.getElementById("preview-image");
-    let form = document.getElementsByClassName("upload__label")[0];
-    preview.src = src;
-    preview.style.display = "block";
-    form.style.display = "none";
-  }
-  init().then(() => {
-    predict();
-  });
-}
-
 // the link to your model provided by Teachable Machine export panel
 const URL = "https://teachablemachine.withgoogle.com/models/PMw8cuZzx/";
 
@@ -26,7 +11,6 @@ async function init() {
   // load the model and metadata
   // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
   // or files from your local hard drive
-  // Note: the pose library adds "tmImage" object to your window (window.tmImage)
   model = await tmImage.load(modelURL, metadataURL);
   maxPredictions = model.getTotalClasses();
 
@@ -38,7 +22,7 @@ async function init() {
   }
 }
 
-// run the webcam image through the image model
+// predict a uploaded image through the image model
 async function predict() {
   // predict can take in an image, video or canvas html element
   let image = document.getElementById("preview-image");
@@ -75,13 +59,12 @@ async function predict() {
         result.innerText = testResult;
         result.style.display = "block";
         labelContainer.childNodes[i].innerHTML = label + resultProbability;
-        
-      showShareBtn();
+        showShareBtn();
       } else {
         continue;
       }
     }
-  } 
+  }
   // If User is a female
   else {
     for (let i = 0; i < maxPredictions; i++) {
@@ -108,6 +91,7 @@ async function predict() {
         result.innerText = testResult;
         result.style.display = "block";
         labelContainer.childNodes[i].innerHTML = label + resultProbability;
+        showShareBtn();
       } else {
         continue;
       }
@@ -115,17 +99,40 @@ async function predict() {
   }
 }
 
+const navMenu = document.querySelector(".nav__menu");
+const navToggleBtn = document.querySelector(".nav__menu__btn");
+document.addEventListener("click", () => {
+  navMenu.classList.toggle("open");
+});
+// SNS share btn
+function showShareBtn() {
+  const shareBtn = document.getElementById("shareBtn");
+  shareBtn.style.display = "block";
+}
+
+
+function showPreview(event) {
+  document.getElementsByClassName("upload__form").hidden = false;
+  if (event.target.files.length > 0) {
+    let src = window.URL.createObjectURL(event.target.files[0]);
+    let preview = document.getElementById("preview-image");
+    let form = document.getElementsByClassName("upload__label")[0];
+    preview.src = src;
+    preview.style.display = "block";
+    form.style.display = "none";
+  }
+  init().then(() => {
+    predict();
+  });
+}
+
 function checkGender() {
-  const checkedGender = document.getElementsByClassName("toggle-state")[0].checked;
-  
+  const checkedGender = document.getElementsByClassName("toggle-state")[0]
+    .checked;
+
   if (checkedGender) {
     return "female";
   } else {
     return "male";
   }
-}
-
-function showShareBtn() {
-  let shareBtn = document.getElementById("shareBtn");
-  shareBtn.style.display = "block";
 }
