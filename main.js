@@ -5,12 +5,12 @@ navToggleBtn.addEventListener("click", () => {
   navMenu.classList.toggle("open");
 });
 
-// Remove Menu list after clicking on 
-document.querySelectorAll('.nav__menu__list').forEach(item => {
-  item.addEventListener('click', () => {
+// Remove Menu list after clicking on
+document.querySelectorAll(".nav__menu__list").forEach((item) => {
+  item.addEventListener("click", () => {
     navMenu.classList.remove("open");
-  })
-})
+  });
+});
 
 // Check Gender
 function checkGender() {
@@ -59,7 +59,7 @@ function tryAgainBtn() {
   tryAgain.style.display = "block";
   tryAgain.addEventListener("click", () => {
     location.reload();
-  })
+  });
 }
 
 // Teachable Machine
@@ -105,24 +105,29 @@ async function predict() {
         prediction[i].className === "badmen" ||
         prediction[i].className === "goodmen"
       ) {
-        const resultProbability = Math.round(prediction[i].probability.toFixed(2) * 100) + "%";
+        const resultProbability =
+          Math.round(prediction[i].probability.toFixed(2) * 100) + "%";
         let label;
         let testResult;
         switch (prediction[i].className) {
           case "badmen":
             testResult = "바람꾼";
-            label = "바람필 확률 👉🏻 ";
+            label = "바람기 👉🏻 ";
             break;
           case "goodmen":
-            testResult = "바람직한 사람";
-            label = "바람안필 확률 👉🏻";
+            testResult = "순정남";
+            label = "순정도 👉🏻";
             break;
           default:
             testResult = "알수없음";
         }
-        let result = document.querySelector(".test-result");
-        result.innerText = testResult;
-        result.style.display = "block";
+        if (i === 0) {
+          let result = document.querySelector(".test-result");
+          result.innerText = testResult;
+          result.style.display = "block";
+        }
+        let moreBtn = document.querySelector(".viewMoreMen");
+        moreBtn.style.display = "block";
         labelContainer.childNodes[i].innerHTML = label + resultProbability;
         showShareBtn();
         tryAgainBtn();
@@ -138,24 +143,29 @@ async function predict() {
         prediction[i].className === "badwomen" ||
         prediction[i].className === "goodwomen"
       ) {
-        const resultProbability = Math.round(prediction[i].probability.toFixed(2) * 100) + "%";
+        const resultProbability =
+          Math.round(prediction[i].probability.toFixed(2) * 100) + "%";
         let label;
         let testResult;
         switch (prediction[i].className) {
           case "badwomen":
-            testResult = "바람필상";
-            label = "바람필 확률 👉🏻 ";
+            testResult = "바람꾼";
+            label = "바람기 👉🏻 ";
             break;
           case "goodwomen":
-            testResult = "바람안필상";
-            label = "바람안필 확률 👉🏻 ";
+            testResult = "순정녀";
+            label = "순정도 👉🏻 ";
             break;
           default:
             testResult = "알수없음";
         }
-        let result = document.querySelector(".test-result");
-        result.innerText = testResult;
-        result.style.display = "block";
+        if (i === 0) {
+          let result = document.querySelector(".test-result");
+          result.innerText = testResult;
+          result.style.display = "block";
+        }
+        let moreBtn = document.querySelector(".viewMoreWomen");
+        moreBtn.style.display = "block";
         labelContainer.childNodes[i].innerHTML = label + resultProbability;
         showShareBtn();
         tryAgainBtn();
@@ -165,7 +175,3 @@ async function predict() {
     }
   }
 }
-
-window.addEventListener('load',function(){
-  document.querySelector('body').classList.add("loaded")  
-});

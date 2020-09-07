@@ -8,7 +8,7 @@ body {
   margin: 0;
   font-family: "Jua", sans-serif;
   cursor: default;
-  background-color: #FAE379;
+  background-color: #fae379;
   color: #404146;
 }
 
@@ -112,8 +112,8 @@ a {
   display: inline-flex;
   align-items: center;
   cursor: pointer;
-  background-color: #F1F1F1;
-  color: #F1F1F1;
+  background-color: #f1f1f1;
+  color: #f1f1f1;
   border-radius: 15px;
 }
 
@@ -127,14 +127,14 @@ a {
   width: 60px;
   border-radius: 15px;
   overflow: hidden;
-  box-shadow: -8px -4px 8px 0px #FAE379, 8px 4px 12px 0px #FAE379,
+  box-shadow: -8px -4px 8px 0px #fae379, 8px 4px 12px 0px #fae379,
     4px 4px 4px 0px #d1d9e6 inset, -4px -4px 4px 0px #ffffff inset;
 }
 
 .gender__indicator {
   height: 100%;
   width: 200%;
-  background: #42A5F5;
+  background: #42a5f5;
   border-radius: 15px;
   transform: translate3d(-75%, 0, 0);
   transition: transform 0.4s cubic-bezier(0.85, 0.05, 0.18, 1.4);
@@ -147,7 +147,7 @@ a {
 
 .gender__toggle-state:checked ~ .gender__indicator {
   transform: translate3d(25%, 0, 0);
-  background: #FF5A5A;
+  background: #ff5a5a;
 }
 
 /* Image Uploader Form */
@@ -174,7 +174,7 @@ a {
   display: block;
   padding: 30% 5%;
   text-align: center;
-  background: #F1F1F1;
+  background: #f1f1f1;
   color: #404146;
   font-size: 1.8rem;
   border-radius: 10px;
@@ -193,8 +193,8 @@ a {
 }
 
 .loader {
-  border: 16px solid #FF5A5A; 
-  border-top: 16px solid #F1F1F1; 
+  border: 16px solid #ff5a5a;
+  border-top: 16px solid #f1f1f1;
   border-radius: 50%;
   width: 60px;
   height: 60px;
@@ -207,8 +207,12 @@ a {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .test-result {
@@ -224,16 +228,28 @@ a {
 .tryAgainBtn {
   display: none;
   font-size: 2rem;
-  background-color: #FF5A5A;
+  background-color: #ff5a5a;
   font-family: "Jua", sans-serif;
-  color: #F1F1F1;
+  color: #f1f1f1;
   border-radius: 10px;
-  border: #FF5A5A;
+  border: #ff5a5a;
   margin: 0 auto;
   height: 20%;
   padding: 10px;
 }
 
+.viewMoreMen,
+.viewMoreWomen {
+  display: none;
+  font-size: 1.3rem;
+  color: #ff5a5a;
+  padding-top: 20px;
+}
+
+.viewMoreMen a,
+.viewMoreWomen a {
+  color: #ff5a5a;
+}
 /* About */
 
 #about {
@@ -270,7 +286,7 @@ a {
   #nav {
     margin: 5%;
   }
-  
+
   .nav__menu {
     flex-direction: column;
     position: absolute;
@@ -336,7 +352,7 @@ a {
     padding: 40% 0;
     font-size: 1.5rem;
   }
-  
+
   .tryAgainBtn {
     font-size: 1.5rem;
     height: 50px;
