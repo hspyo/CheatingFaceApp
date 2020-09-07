@@ -83,11 +83,11 @@ a {
 }
 
 .home__content1 h1 {
-  font-size: 2.5rem;
+  font-size: 3rem;
 }
 
 .home__content1 h3 {
-  font-size: 2rem;
+  font-size: 2.5rem;
 }
 
 .home__content2 {
@@ -254,8 +254,8 @@ a {
 
 #about {
   text-align: center;
-  font-size: 1.3rem;
-  margin-top: 30%;
+  font-size: 2.2rem;
+  margin: 30% 0;
 }
 
 .about__descriptoin {
@@ -277,7 +277,7 @@ a {
 }
 
 .arrow-up__btn a {
-  color: black;
+  color: #ff5a5a;
 }
 
 /* MediaQuery */
@@ -356,6 +356,10 @@ a {
   .tryAgainBtn {
     font-size: 1.5rem;
     height: 50px;
+  }
+  
+  #about {
+    font-size: 1.5rem;
   }
 
   .arrow-up__btn {

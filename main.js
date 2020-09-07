@@ -97,7 +97,7 @@ async function predict() {
   );
   // Check Gender
   checkGender();
-
+  console.log(prediction[0].className);
   // If User is a male
   if (checkGender() === "male") {
     for (let i = 0; i < maxPredictions; i++) {
@@ -105,8 +105,7 @@ async function predict() {
         prediction[i].className === "badmen" ||
         prediction[i].className === "goodmen"
       ) {
-        const resultProbability =
-          Math.round(prediction[i].probability.toFixed(2) * 100) + "%";
+        const resultProbability = Math.round(prediction[i].probability.toFixed(2) * 100) + "%";
         let label;
         let testResult;
         switch (prediction[i].className) {
@@ -121,11 +120,14 @@ async function predict() {
           default:
             testResult = "알수없음";
         }
-        if (i === 0) {
+        // the Test Main Result to show only one time
+        if (mainResult !== 0) {
           let result = document.querySelector(".test-result");
           result.innerText = testResult;
           result.style.display = "block";
+          var mainResult = 0;
         }
+        // View a face feature about Men
         let moreBtn = document.querySelector(".viewMoreMen");
         moreBtn.style.display = "block";
         labelContainer.childNodes[i].innerHTML = label + resultProbability;
@@ -143,8 +145,7 @@ async function predict() {
         prediction[i].className === "badwomen" ||
         prediction[i].className === "goodwomen"
       ) {
-        const resultProbability =
-          Math.round(prediction[i].probability.toFixed(2) * 100) + "%";
+        const resultProbability = Math.round(prediction[i].probability.toFixed(2) * 100) + "%";
         let label;
         let testResult;
         switch (prediction[i].className) {
@@ -159,10 +160,11 @@ async function predict() {
           default:
             testResult = "알수없음";
         }
-        if (i === 0) {
+        if (mainResult !== 0) {
           let result = document.querySelector(".test-result");
           result.innerText = testResult;
           result.style.display = "block";
+          var mainResult = 0;
         }
         let moreBtn = document.querySelector(".viewMoreWomen");
         moreBtn.style.display = "block";
