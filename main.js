@@ -28,6 +28,8 @@ function checkGender() {
 // Show Image Preview
 function showPreview(event) {
   document.getElementsByClassName("upload__form").hidden = false;
+  let loader = document.querySelector(".loader");
+  let loadingMsg = document.querySelector(".loading__msg");
   if (event.target.files.length > 0) {
     let src = window.URL.createObjectURL(event.target.files[0]);
     let preview = document.getElementById("preview-image");
@@ -35,8 +37,12 @@ function showPreview(event) {
     preview.src = src;
     preview.style.display = "block";
     form.style.display = "none";
+    loader.style.display = "block";
+    loadingMsg.style.display = "block";
   }
   init().then(() => {
+    loader.style.display = "none";
+    loadingMsg.style.display = "none";
     predict();
   });
 }
@@ -99,7 +105,7 @@ async function predict() {
         prediction[i].className === "badmen" ||
         prediction[i].className === "goodmen"
       ) {
-        const resultProbability = prediction[i].probability.toFixed(2);
+        const resultProbability = Math.round(prediction[i].probability.toFixed(2) * 100) + "%";
         let label;
         let testResult;
         switch (prediction[i].className) {
@@ -132,7 +138,7 @@ async function predict() {
         prediction[i].className === "badwomen" ||
         prediction[i].className === "goodwomen"
       ) {
-        const resultProbability = prediction[i].probability.toFixed(2);
+        const resultProbability = Math.round(prediction[i].probability.toFixed(2) * 100) + "%";
         let label;
         let testResult;
         switch (prediction[i].className) {
@@ -160,3 +166,6 @@ async function predict() {
   }
 }
 
+window.addEventListener('load',function(){
+  document.querySelector('body').classList.add("loaded")  
+});

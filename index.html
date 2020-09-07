@@ -48,7 +48,7 @@
             <div class="gender__indicator"></div>
           </div>
         </label>
-        <div class="gender__label-text">남자 / 여자</div>
+        <div class="gender__label-text">남 / 여</div>
        </div>
         <!-- Image Uploader Form -->
         <div class="uploader">
@@ -57,6 +57,9 @@
             <input type="file" id="upload-file" accept="image/*" onchange="showPreview(event);">
             <div class="upload__preview"></div>
               <img class="preview" id="preview-image" />
+              <div class="loader"></div>
+              <div class="loading__msg">AI가 분석중입니다.</div>
+              
               <p class="test-result"></p>
               <div id="label-container"></div>
               <!-- SNS share button -->
