@@ -12,10 +12,17 @@ document.querySelectorAll('.nav__menu__list').forEach(item => {
   })
 })
 
-// Show SNS Share Button
-function showShareBtn() {
-  const shareBtn = document.getElementById("shareBtn");
-  shareBtn.style.display = "block";
+// Check Gender
+function checkGender() {
+  const checkedGender = document.getElementsByClassName(
+    "gender__toggle-state"
+  )[0].checked;
+
+  if (checkedGender) {
+    return "female";
+  } else {
+    return "male";
+  }
 }
 
 // Show Image Preview
@@ -33,17 +40,20 @@ function showPreview(event) {
     predict();
   });
 }
-// Check Gender
-function checkGender() {
-  const checkedGender = document.getElementsByClassName(
-    "gender__toggle-state"
-  )[0].checked;
 
-  if (checkedGender) {
-    return "female";
-  } else {
-    return "male";
-  }
+// Show SNS Share Button
+function showShareBtn() {
+  const shareBtn = document.getElementById("shareBtn");
+  shareBtn.style.display = "block";
+}
+
+// Try Again Button
+function tryAgainBtn() {
+  let tryAgain = document.querySelector(".tryAgainBtn");
+  tryAgain.style.display = "block";
+  tryAgain.addEventListener("click", () => {
+    location.reload();
+  })
 }
 
 // Teachable Machine
@@ -109,6 +119,7 @@ async function predict() {
         result.style.display = "block";
         labelContainer.childNodes[i].innerHTML = label + resultProbability;
         showShareBtn();
+        tryAgainBtn();
       } else {
         continue;
       }
@@ -141,9 +152,11 @@ async function predict() {
         result.style.display = "block";
         labelContainer.childNodes[i].innerHTML = label + resultProbability;
         showShareBtn();
+        tryAgainBtn();
       } else {
         continue;
       }
     }
   }
 }
+
