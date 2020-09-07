@@ -5,12 +5,20 @@ navToggleBtn.addEventListener("click", () => {
   navMenu.classList.toggle("open");
 });
 
-// SNS share btn
+// Remove Menu list after clicking on 
+document.querySelectorAll('.nav__menu__list').forEach(item => {
+  item.addEventListener('click', () => {
+    navMenu.classList.remove("open");
+  })
+})
+
+// Show SNS Share Button
 function showShareBtn() {
   const shareBtn = document.getElementById("shareBtn");
   shareBtn.style.display = "block";
 }
 
+// Show Image Preview
 function showPreview(event) {
   document.getElementsByClassName("upload__form").hidden = false;
   if (event.target.files.length > 0) {
@@ -25,17 +33,18 @@ function showPreview(event) {
     predict();
   });
 }
-
+// Check Gender
 function checkGender() {
-  const checkedGender = document.getElementsByClassName("gender__toggle-state")[0]
-    .checked;
+  const checkedGender = document.getElementsByClassName(
+    "gender__toggle-state"
+  )[0].checked;
 
   if (checkedGender) {
     return "female";
   } else {
     return "male";
   }
-} 
+}
 
 // Teachable Machine
 // the link to your model provided by Teachable Machine export panel
@@ -85,12 +94,12 @@ async function predict() {
         let testResult;
         switch (prediction[i].className) {
           case "badmen":
-            testResult = "바람필상";
-            label = "바람필상";
+            testResult = "바람꾼";
+            label = "바람필 확률 👉🏻 ";
             break;
           case "goodmen":
-            testResult = "바람안필상";
-            label = "바람안필상";
+            testResult = "바람직한 사람";
+            label = "바람안필 확률 👉🏻";
             break;
           default:
             testResult = "알수없음";
@@ -118,11 +127,11 @@ async function predict() {
         switch (prediction[i].className) {
           case "badwomen":
             testResult = "바람필상";
-            label = "바람필상";
+            label = "바람필 확률 👉🏻 ";
             break;
           case "goodwomen":
             testResult = "바람안필상";
-            label = "바람안필상";
+            label = "바람안필 확률 👉🏻 ";
             break;
           default:
             testResult = "알수없음";
