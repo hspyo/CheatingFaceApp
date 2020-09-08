@@ -1,46 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>바람기 예측기</title>
-    <meta name="description" content="Cheating Face-test with AI" />
-    <meta name="author" content="Pyo" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="icon" type="image/png" href="imgs/favicon.png">
-    <script src="main.js" defer></script>
-    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5f5083bb85a9361b"></script>
-    <script src="https://kit.fontawesome.com/1abff94538.js" crossorigin="anonymous"></script>
-  </head>
-  <body>
-    <!-- NavBar  -->
-    <nav id="nav">
-      <div class="nav__logo">
-        <img src="imgs/logo.png" alt="">
-        <a href="#">바람예보</a>
-      </div>
-      <div>
-        <ul class="nav__menu">
-          <li class="nav__menu__list"><a href="#">Home</a></li>
-          <li class="nav__menu__list"><a href="#about">About</a></li>
-        </ul>
-      </div>
-   <!-- NavBar Toggle Button -->
-      <button class="nav__toggle__btn">
-        <i class="fas fa-bars"></i>
-      </button>
-    </nav>
-      
-  <!-- Home -->
-    <section id="home">
-      <div class="home__content1">
-        <h1 class="title__main">바람기 테스트</h1>
-        <h3 class="title__sub">인공지능이 당신을 분석합니다.</h3>
-      </div>
 
-      <div class="home__content2">
-        <!-- Gender Toggle -->
-        <div class="gender">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>바람기 예측기</title>
+  <meta name="description" content="Cheating Face-test with AI" />
+  <meta name="author" content="Pyo" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="imgs/favicon.png">
+  <script src="main.js" defer></script>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5f5083bb85a9361b"></script>
+  <script src="https://kit.fontawesome.com/1abff94538.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <!-- NavBar  -->
+  <nav id="nav">
+    <div class="nav__logo">
+      <img src="imgs/logo.png" alt="">
+      <a href="#">바람예보</a>
+    </div>
+    <div>
+      <ul class="nav__menu">
+        <li class="nav__menu__list"><a href="#">Home</a></li>
+        <li class="nav__menu__list"><a href="#about">About</a></li>
+        <li class="nav__menu__list"><a href="#men">Men</a></li>
+        <li class="nav__menu__list"><a href="#women">Women</a></li>
+      </ul>
+    </div>
+    <!-- NavBar Toggle Button -->
+    <button class="nav__toggle__btn">
+      <i class="fas fa-bars"></i>
+    </button>
+  </nav>
+
+  <!-- Home -->
+  <section id="home">
+    <div class="home__content1">
+      <h1 class="title__main">바람기 테스트</h1>
+      <h3 class="title__sub">인공지능이 당신을 분석합니다.</h3>
+    </div>
+
+    <div class="home__content2">
+      <!-- Gender Toggle -->
+      <div class="gender">
         <h1>성별</h1>
         <label class="gender__label">
           <div class="gender__toggle">
@@ -49,46 +53,135 @@
           </div>
         </label>
         <div class="gender__label-text">남 / 여</div>
-       </div>
-        <!-- Image Uploader Form -->
-        <div class="uploader">
-          <div class="upload__form">
-            <label class="upload__label" for="upload-file">UPLOAD IMAGE !</label> 
-            <input type="file" id="upload-file" accept="image/*" onchange="showPreview(event);">
-            <div class="upload__preview"></div>
-              <img class="preview" id="preview-image" />
-              <!-- Loader -->
-              <div class="loader"></div>
-              <div class="loading__msg">AI가 분석중입니다.</div>             
-              <!-- Test Result -->
-              <p class="test-result"></p>
-              <div id="label-container"></div>
-              <div class="viewMoreMen"><a href="">남자 바람상 특징 보기</a></div>
-              <div class="viewMoreWomen"><a href="">여자 바람상 특징 보기</a></div>
-              <!-- SNS share button -->
-              <div id="shareBtn"class="addthis_inline_share_toolbox"></div>
-              <button class="tryAgainBtn">다른 사진 올리기</button>
-            </div>
-          </div>  
+      </div>
+      <!-- Image Uploader Form -->
+      <div class="uploader">
+        <div class="upload__form">
+          <label class="upload__label" for="upload-file">UPLOAD IMAGE !</label>
+          <input type="file" id="upload-file" accept="image/*" onchange="showPreview(event);">
+          <div class="upload__preview"></div>
+          <img class="preview" id="preview-image" />
+          <!-- Loader -->
+          <div class="loader"></div>
+          <div class="loading__msg">AI가 분석중입니다...</div>
+          <!-- Test Result -->
+          <p class="test-result"></p>
+          <div id="label-container"></div>
+          <div class="viewMoreMen"><a href="#menFace">바람상 확인해보기</a></div>
+          <div class="viewMoreWomen"><a href="#womenFace">얼굴 특징 확인하기</a></div>
+          <!-- SNS share button -->
+          <div id="shareBtn" class="addthis_inline_share_toolbox"></div>
+          <button class="tryAgainBtn">다른 사진 올리기</button>
         </div>
       </div>
-    </section>
+    </div>
+    </div>
+  </section>
 
-    <!-- About -->
-    <section id="about">
-       <div class="about__descriptoin">
-         <h1>About</h1>
-         <h3>인공지능이 사람의 관상을 <br/> 분석하여 결과를 보여줍니다. </h3>
-       </div>
-    </section>
-  
-    <!-- Arrow up -->
-    <button class="arrow-up__btn">
-      <a href="#"><i class="fas fa-arrow-up"></i></a>
-    </button>
+  <!-- About -->
+  <section id="about">
+    <div class="about__descriptoin">
+      <h1>About</h1>
+      <h3>인공지능이 사람의 관상을 <br /> 분석하여 결과를 보여줍니다. </h3>
+    </div>
+  </section>
 
-    <!-- Teachable Machine cdn-->
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
-  </body>
+  <section id="men">
+    <h1 class="menFace">MEN</h1>
+    <div class="menFace__title">
+      <img src="imgs/men.jpg" alt="남자 바람상 특징">
+      <h2>남자 바람상 특징</h2>
+    </div>
+    <div>
+      <ul class="menFace__info">
+        <li class="menFace__info__list">
+          <h1>1. 짧고 두꺼운, 치켜올라가있는 눈썹 </h1>
+          <p>화려한 것을 좋아하는 멋쟁이들. 우유부단한 성격탓에 단호히 거절을 못한다.
+          </p>
+        </li>
+        <li class="menFace__info__list">
+          <h1>2. 잔주름있는 눈꼬리</h1>
+          <p>매력적인 바람둥이, 눈웃음이 특히 매력적이다. </p>
+        </li>
+        <li class="menFace__info__list">
+          <h1>3. 높은코 or 매부리코</h1>
+          <p>어떤 상황이든지 소유하려는 경향이 강하고 유혹에 약하다.</p>
+        </li>
+        <li class="menFace__info__list">
+          <h1>4. 눈밑 애교살이 두껍다.</h1>
+          <p> 정력과 성욕이 왕성해 바람을 피우기 쉽다.
+          </p>
+        </li>
+        <li class="menFace__info__list">
+          <h1>5. 입에 세로선이 많고 두꺼운 아랫 입술.</h1>
+          <p>성격이 냉정하고 마음을 깊이 나누지 않는다. 색욕이 강해 이성을 탐하는 것을 즐긴다. </p>
+        </li>
+        <li class="menFace__info__list">
+          <h1>6. 눈커풀 아래나 눈 꼬리쪽에 점 있다</h1>
+          <p>감정 기복이 있는 편이고 정이 많아 금방 사랑에 빠진다.</p>
+        </li>
+        <li class="menFace__info__list">
+          <h1>7. 각진 얼굴형</h1>
+          <p> 정열적이고 주관이 뚜렷하고 의지력이 강하다. 하지만 질투가 많고 자신의 욕망을 채워야한다.</p>
+        </li>
+        <li class="menFace__info__list">
+          <h1>8. 두꺼비 상</h1>
+          <p> 후덕하고 인상이 좋아보이는 얼굴상이지만 여자를 밝히고 능청스럽다. </p>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section id="women">
+    <h1 class="womenFace">WOMEN</h1>
+    <div class="womenFace__title">
+      <img src="imgs/women.jpg" alt="여자 바람상 특징">
+      <h2>여자 바람상 특징</h2>
+    </div>
+    <div>
+      <ul class="womenFace__info">
+        <li class="womenFace__info__list">
+          <h1>1. 눈썹과 눈썹 사이가 멀다</h1>
+          <p>남녀 불문! 눈썹사이가 멀면 유혹에 약하고 바람기가 다분하다.
+          </p>
+        </li>
+        <li class="womenFace__info__list">
+          <h1>2. 눈썹 숱이 별로 없다</h1>
+          <p> 자기관리를 잘하고 관심받기를 좋아한다. 거기다 호감있는 성격으로 이성과 접촉이 많다.
+          </p>
+        </li>
+        <li class="womenFace__info__list">
+          <h1>3. 좌우광대가 발달해 있다 </h1>
+          <p> 적극적이고 주도적으로 관계를 이끌고 질투심이 강하다. 마음먹은 것은 해야 직성이 풀린다.
+        <li class="womenFace__info__list">
+          <h1>4. 흐릿한 눈빛 </h1>
+          <p> 볼수록 끌리는 타입으로 이성을 홀리는 매력이 있다.
+          </p>
+        </li>
+        <li class="womenFace__info__list">
+          <h1>5. 작고 높은 코 </h1>
+          <p>외로움을 많이 타는 성격으로 다른 이성에게 쉽게 호감을 가지는 타입
+          </p>
+        </li>
+        <li class="womenFace__info__list">
+          <h1>6. 작고 도톰한 입술 </h1>
+          <p> 스킨십을 좋아하고 이성의 유혹에 약한편. </p>
+        </li>
+        <li class="womenFace__info__list">
+          <h1>7.입술에 세로 주름이 많다 </h1>
+          <p> 성욕이 강하고 이성적인 성격으로 속 얘기를 쉽게 하지않는다. 이성에 대한 탐욕이 많다.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Arrow up -->
+  <button class="arrow-up__btn">
+    <a href="#"><i class="fas fa-arrow-up"></i></a>
+  </button>
+
+  <!-- Teachable Machine cdn-->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+</body>
+
 </html>

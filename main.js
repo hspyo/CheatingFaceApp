@@ -105,7 +105,8 @@ async function predict() {
         prediction[i].className === "badmen" ||
         prediction[i].className === "goodmen"
       ) {
-        const resultProbability = Math.round(prediction[i].probability.toFixed(2) * 100) + "%";
+        const resultProbability =
+          Math.round(prediction[i].probability.toFixed(2) * 100) + "%";
         let label;
         let testResult;
         switch (prediction[i].className) {
@@ -134,6 +135,11 @@ async function predict() {
         showShareBtn();
         tryAgainBtn();
       } else {
+        if (i === 0) {
+          alert("얼굴이 잘 나온 다른 사진으로 재시도 해주세요");
+          tryAgainBtn();
+          break;
+        }
         continue;
       }
     }
@@ -145,7 +151,8 @@ async function predict() {
         prediction[i].className === "badwomen" ||
         prediction[i].className === "goodwomen"
       ) {
-        const resultProbability = Math.round(prediction[i].probability.toFixed(2) * 100) + "%";
+        const resultProbability =
+          Math.round(prediction[i].probability.toFixed(2) * 100) + "%";
         let label;
         let testResult;
         switch (prediction[i].className) {
@@ -172,6 +179,11 @@ async function predict() {
         showShareBtn();
         tryAgainBtn();
       } else {
+        if (i === 0) {
+          alert("얼굴이 잘 나온 다른 사진으로 재시도 해주세요");
+          tryAgainBtn();
+          break;
+        }
         continue;
       }
     }
