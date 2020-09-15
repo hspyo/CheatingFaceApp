@@ -24,3 +24,10 @@ GooglePlay Download <br/> ✅ https://play.google.com/store/apps/details?id=com.
 
 ### Machine Learning  Tool
 * Teable Machine
+- 데이터 제작 및 학습과정
+1. 남녀 바람기 관상에 대해 조사하였습니다.
+2. 조사 결과를 바탕으로 이에 해당하는 남녀 연예인 각각 10명씩 총 20명을 선정하였습니다.
+3. 네이버를 바탕으로 웹크롤링(파이썬이용)을 하여 2000장 사진을 수집하였습니다.
+4. 2000장 중 얼굴이 잘 안나오거나 배경위주의 사진들을 제거하였습니다.(데이터 클렌징)
+5. 클렌징된 데이터들을 이용해 Teachable Machine을 학습시켰습니다.
+6. 기존 코드 Webcam형식을 -> 파일업로드 형식으로 변환하여 코드 수정 후 어플리케이션을 제작했습니다.
