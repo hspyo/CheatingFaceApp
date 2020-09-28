@@ -16,7 +16,7 @@
 </head>
 
 <body>
-  <!-- NavBar  -->
+  <!-- 네비게이션 바  -->
   <nav id="nav">
     <div class="nav__logo">
       <img src="imgs/logo.png" alt="로고">
@@ -30,52 +30,55 @@
         <li class="nav__menu__list"><a href="#women">Women</a></li>
       </ul>
     </div>
-    <!-- NavBar Toggle Button -->
+    <!-- 네비게이션 토글 버튼 -->
     <button class="nav__toggle__btn">
       <i class="fas fa-bars"></i>
     </button>
   </nav>
 
-  <!-- Home -->
+  <!-- 메인화면 -->
   <section id="home">
+    <!-- 메인화면 영역 1 -->
     <div class="home__content1">
-      <h1 class="title__main">바람기 테스트</h1>
-      <h3 class="title__sub">인공지능이 당신을 분석합니다.</h3>
+      <h1 class="content1__title">바람기 테스트</h1>
+      <h3 class="content1__subtitle">인공지능이 당신을 분석합니다.</h3>
     </div>
-
-    <div class="home__content2">
-      <!-- Gender Toggle -->
-      <div class="gender">
+    <!-- 메인화면 영역 2 -->
+    <div class="home__content2"> 
+      <!-- 성별 선택 -->
+      <div class="content2__gender">
         <h1>성별</h1>
         <label class="gender__label">
           <div class="gender__toggle">
-            <input class="gender__toggle-state" type="checkbox" name="gender" />
+            <input class="gender__state" type="checkbox" name="gender" />
             <div class="gender__indicator"></div>
           </div>
         </label>
-        <div class="gender__label-text">남 / 여</div>
+        <div class="gender__text">남 / 여</div>
       </div>
-      <!-- Image Uploader Form -->
-      <div class="uploader">
-        <div class="upload__form">
-          <label class="upload__label" for="upload-file">UPLOAD IMAGE !</label>
-          <input type="file" id="upload-file" accept="image/*" onchange="showPreview(event);">
-          <div class="upload__preview"></div>
-          <img class="preview" id="preview-image" />
-          <!-- Loader -->
-          <div class="loader"></div>
+      <!-- 이미지 업로드 -->
+      <div class="content2__uploader">
+        <div class="upload__form"> <!-- 이미지 폼 -->
+          <label class="upload__label" for="upload__file">UPLOAD IMAGE !</label>
+          <input id="upload__file" type="file" accept="image/*" onchange="showPreview(event)">
+          
+          <div class="preview"></div> <!-- 이미지 프리뷰 -->
+          <img class="preview__image" alt="이미지 프리뷰" />
+        
+          <div class="loader"></div>   <!-- 로딩 중 화면 -->
           <div class="loading__msg">AI가 분석중입니다...</div>
-          <!-- Test Result -->
-          <p class="test-result"></p>
-          <div id="label-container"></div>
-          <div class="viewMoreMen"><a href="#men">얼굴 특징 확인하기</a></div>
-          <div class="viewMoreWomen"><a href="#women">얼굴 특징 확인하기</a></div>
-          <!-- SNS share button -->
-          <div id="shareBtn" class="addthis_inline_share_toolbox"></div>
-          <button class="tryAgainBtn">다른 사진 올리기</button>
+          
+          <p class="result"></p>  <!-- 테스트 결과  -->
+          <div id="result__container"></div>
+
+          <div class="view__more__men"><a href="#men">남자 바람상 특징</a></div> <!-- 남녀 얼굴 특징 확인 -->
+          <div class="view__more__women"><a href="#women">여자 바람상 특징</a></div>
+          
+          <div id="sns__share__btn" class="addthis_inline_share_toolbox"></div> <!-- SNS 공유 버튼 -->
+          <button class="tryAgain__btn">다른 사진 올리기</button>
+          </div>
         </div>
       </div>
-    </div>
     </div>
   </section>
 
@@ -86,7 +89,8 @@
       <h3>인공지능이 사람의 관상을 <br /> 분석하여 결과를 보여줍니다. </h3>
     </div>
   </section>
-
+  
+  <!-- 남자 바람상 특징 -->
   <section id="men">
     <h1 class="menFace">MEN</h1>
     <div class="menFace__title">
@@ -132,6 +136,8 @@
       </ul>
     </div>
   </section>
+
+  <!-- 여자 바람상 특징 -->
   <section id="women">
     <h1 class="womenFace">WOMEN</h1>
     <div class="womenFace__title">
